@@ -9,8 +9,8 @@ const SuggestionItem = props => {
   }
 
   return (
-    <div>
-      <li className="list-item-container">
+    <li>
+      <div className="list-item-container">
         <p>{suggestion}</p>
         <img
           onClick={clickedOnArrow}
@@ -18,8 +18,8 @@ const SuggestionItem = props => {
           src="https://assets.ccbp.in/frontend/react-js/diagonal-arrow-left-up.png"
           alt="arrow"
         />
-      </li>
-    </div>
+      </div>
+    </li>
   )
 }
 

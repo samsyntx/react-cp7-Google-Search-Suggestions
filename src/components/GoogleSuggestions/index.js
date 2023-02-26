@@ -14,10 +14,10 @@ class GoogleSuggestions extends Component {
   }
 
   render() {
-    const {suggestionsList} = this.props
     const {typedInput} = this.state
+    const {suggestionsList} = this.props
 
-    const isIncludedTypedInput = suggestionsList.filter(eachItem =>
+    const filteredList = suggestionsList.filter(eachItem =>
       eachItem.suggestion.toLowerCase().includes(typedInput.toLowerCase()),
     )
     return (
@@ -44,7 +44,7 @@ class GoogleSuggestions extends Component {
             />
           </div>
           <ul className="unorder-list-container">
-            {isIncludedTypedInput.map(eachItem => (
+            {filteredList.map(eachItem => (
               <SuggestionItem
                 key={eachItem.id}
                 searchItems={eachItem}
