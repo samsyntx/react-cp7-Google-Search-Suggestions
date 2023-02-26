@@ -3,9 +3,23 @@ import SuggestionItem from '../SuggestionItem'
 import './index.css'
 
 class GoogleSuggestions extends Component {
+  state = {typedInput: ''}
+
+  gettingResultAsPerSearch = event => {
+    this.setState({typedInput: event.target.value})
+  }
+
+  automatedTyped = suggestion => {
+    this.setState({typedInput: suggestion})
+  }
+
   render() {
     const {suggestionsList} = this.props
+    const {typedInput} = this.state
 
+    const isIncludedTypedInput = suggestionsList.filter(eachItem =>
+      eachItem.suggestion.toLowerCase().includes(typedInput.toLowerCase()),
+    )
     return (
       <div className="main-page-root-container">
         <img
@@ -20,11 +34,24 @@ class GoogleSuggestions extends Component {
               src="https://assets.ccbp.in/frontend/react-js/google-search-icon.png"
               alt="search icon"
             />
-            <input className="search-box-styling" type="search" />
+            <input
+              value={typedInput}
+              onChange={this.gettingResultAsPerSearch}
+              className="search-box-styling"
+              type="search"
+              placeholder="Search Google"
+              id="searchBoxId"
+            />
           </div>
-          {suggestionsList.map(eachItem => (
-            <SuggestionItem key={eachItem.id} searchItems={eachItem} />
-          ))}
+          <ul className="unorder-list-container">
+            {isIncludedTypedInput.map(eachItem => (
+              <SuggestionItem
+                key={eachItem.id}
+                searchItems={eachItem}
+                automatedTyped={this.automatedTyped}
+              />
+            ))}
+          </ul>
         </div>
       </div>
     )

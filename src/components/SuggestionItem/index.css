@@ -1,1 +1,17 @@
-/* Write your CSS here */
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+}
+
+.list-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0px 5px 0px;
+}
+.arrow-icon {
+  width: 20px;
+}
