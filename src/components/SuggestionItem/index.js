@@ -1,8 +1,8 @@
 import './index.css'
 
 const SuggestionItem = props => {
-  const {searchItems} = props
-  const {suggestion, automatedTyped} = searchItems
+  const {searchItems, automatedTyped} = props
+  const {suggestion} = searchItems
 
   const clickedOnArrow = () => {
     automatedTyped(suggestion)
